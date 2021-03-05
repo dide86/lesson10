@@ -1,0 +1,68 @@
+package ru.geekbrains.lessons.lesson10;
+
+import java.util.*;
+
+public class lesson10 {
+    private static java.util.Arrays Arrays;
+
+    //----------------1-----------------------
+// Создать массив с набором слов (10-20 слов, должны встречаться повторяющиеся).
+// Найти и вывести список уникальных слов,
+// из которых состоит массив (дубликаты не считаем).
+// Посчитать, сколько раз встречается каждое слово.
+    public static void main(String[] args) {
+
+        ArrayList<String> wordArray = new ArrayList<String>();
+        wordArray.add("Egor");
+        wordArray.add("Alex");
+        wordArray.add("Egor");
+        wordArray.add("Earth");
+        wordArray.add("Fox");
+        wordArray.add("Food");
+        wordArray.add("White");
+        wordArray.add("Dark");
+        wordArray.add("Black");
+        wordArray.add("White");
+        wordArray.add("Dream");
+        wordArray.add("Team");
+
+        Set<String> tempArray = new TreeSet<>();
+        for (String arr : wordArray) {
+            String a = arr.toLowerCase();
+            tempArray.add(a);
+        }
+        for (String tempArr : tempArray) {
+            int count = 0;
+            for (String arr : wordArray) {
+                String a = arr.toLowerCase();
+                if (tempArr.equals(a)) count++;
+            }
+            System.out.println("\"" + tempArr + "\"" + " слово повторяется = " + count);
+        }
+        System.out.println();
+
+// ___________________2_______________________
+// Написать простой класс Телефонный Справочник,
+// который хранит в себе список фамилий и телефонных номеров.
+// В этот телефонный справочник с помощью метода add() можно добавлять записи, а с помощью метода get()
+// искать номер телефона по фамилии. Следует учесть, что под одной фамилией может быть несколько
+// телефонов (в случае однофамильцев), тогда при запросе такой фамилии должны выводиться все телефоны.
+// Желательно не добавлять лишний функционал (дополнительные поля (имя, отчество, адрес),
+// взаимодействие с пользователем через консоль и т.д).
+// Консоль использовать только для вывода результатов проверки телефонного справочника.
+
+        Phonebook phonebook = new Phonebook();
+
+        phonebook.add(2304578, "Ivanov");
+        phonebook.add(5678794, "Porechenko");
+        phonebook.add(3456783, "Byankin");
+        phonebook.add(3456278, "Trueman");
+        phonebook.add(9786053, "Trueman");
+        phonebook.add(6475893, "Trueman");
+
+        phonebook.get("Ivanov");
+        phonebook.get("Porechenko");
+        phonebook.get("Trueman");
+        phonebook.get("Byankin");
+    }
+}
